@@ -43,15 +43,20 @@ To get the app up and running, run the command:
 ### The signup API
 
 URL: /signup
+
 Method: POST
+
 Params: 
+
 	username: unique, required
 	email: unique, required
 	password: required
 	first_name
 	last_name
 	gender: [male, female, other]
+
 Response: 
+	
 	Status: [200, 401, 422, 500]
 	Headers: Content-Type:application/json; charset=utf-8
 	Body: message
@@ -59,11 +64,16 @@ Response:
 ### The login API
 
 URL: /auth/login
+
 Method: POST
+
 Params: 
+
 	email: required
 	password: required
+
 Response:
+
 	Status: [200, 401]
 	Headers: Content-Type:application/json; charset=utf-8
 	Body: [auth_token, message]
