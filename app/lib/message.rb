@@ -30,4 +30,8 @@ class Message
   def self.expired_token
     'Sorry, your token has expired. Please login to continue.'
   end
+
+  def self.internal_server_error
+    'Internal Server Error'
+  end
 end

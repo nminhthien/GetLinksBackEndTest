@@ -8,6 +8,9 @@ module ExceptionHandler
   class ExpiredSignature < StandardError; end
 
   included do
+    rescue_from StandardError do |e|
+      json_response({ message: Message.internal_server_error }, :internal_server_error)
+    end
     # Define custom handlers
     rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
     # rescue_from ActiveRecord::RecordNotUnique, with: :four_twenty_two
@@ -18,9 +21,6 @@ module ExceptionHandler
 
     rescue_from ActiveRecord::RecordNotFound do |e|
       json_response({ message: e.message }, :not_found)
-    end
-    rescue_from ActiveRecord::RecordNotUnique do |e|
-      json_response({ message: e.message }, :internal_server_error)
     end
   end
 
