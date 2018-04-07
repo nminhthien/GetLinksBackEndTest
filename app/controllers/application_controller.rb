@@ -2,8 +2,12 @@ class ApplicationController < ActionController::API
   include ExceptionHandler
 
   # called before every action on controllers
-  before_action :authorize_request
+  before_action :authorize_request, except: [:render_404]
   attr_reader :current_user
+
+  def render_404
+    json_response({ message: Message.routing_error }, :not_found)
+  end
 
   private
 

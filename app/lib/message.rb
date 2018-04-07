@@ -34,4 +34,8 @@ class Message
   def self.internal_server_error
     'Internal Server Error'
   end
+
+  def self.routing_error
+    'Routing error'
+  end
 end
